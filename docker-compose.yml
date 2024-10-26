@@ -1,5 +1,3 @@
-version: '3.9'
-
 services:
   webapp:
     build: .
@@ -14,15 +12,53 @@ services:
     env_file:
       - file.env
     restart: always
+    networks:
+      - dev
 
   redis:
     image: redis
     ports:
       - 6379:6379
     restart: always
-
+    networks:
+      - dev
   db:
     image: mysql
+    volumes:
+      - mysql_data:/var/lib/mysql
     env_file:
       - file.env
     restart: always
+    networks:
+      - dev
+  nginx:
+    build: ./nginx
+    container_name: aniton_nginx
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    volumes:  
+      - ./static:/static
+      - ./media:/media
+      - ./nginx/:/etc/nginx/conf.d/:ro
+      - ./certbot/www:/var/www/certbot/:ro
+      - ./certbot/conf/:/etc/nginx/ssl/:ro
+    depends_on:
+      - webapp
+    networks:
+      - dev
+
+  certbot:
+    image: certbot/certbot:latest
+    volumes:
+      - ./certbot/www/:/var/www/certbot/:rw
+      - ./certbot/conf/:/etc/letsencrypt/:rw
+    networks:
+      - dev
+
+volumes:
+  mysql_data:
+  
+networks:
+  dev:

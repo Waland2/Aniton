@@ -129,7 +129,7 @@ else:
         'default': {
             'ENGINE': os.environ.get('DB_ENGINE'),
             'NAME': os.environ.get('MYSQL_DATABASE'),
-            'USER': 'root',
+            'USER': os.environ.get('MYSQL_ROOT_USER'),
             'PASSWORD': os.environ.get('MYSQL_ROOT_PASSWORD'),
             'HOST':'db',
         }

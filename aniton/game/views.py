@@ -21,12 +21,19 @@ class CreateAnime(APIView):
         reviews = utils.get_reviews(rating, request.profile)
         money_profit, influence_profit = utils.get_profit(rating, request.profile)
 
+
+        types_translation = {
+            "Сериал": "Series",
+            "Фильм": "Movie",
+            "Короткометражка": "Short Film"
+        }
+
         anime_data = dict()
 
         anime_data['creator'] = request.profile
 
         anime_data['name'] = request.data['name']
-        anime_data['type'] = request.data['type']
+        anime_data['type'] = types_translation[request.data['type']]
         anime_data['number_of_series'] = int(request.data['number_of_series'])
 
         anime_data['rating'] = rating
@@ -43,5 +50,6 @@ class CreateAnime(APIView):
             'rating': rating,
             'money_profit': money_profit,
             'influence_profit': influence_profit, 
-            'reviews': reviews
+            'reviews': reviews,
+            'timeout': anime_timeout * 60
         })
