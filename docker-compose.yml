@@ -38,7 +38,7 @@ services:
     ports:
       - 80:80
       - 443:443
-    volumes:  
+    volumes:
       - ./static:/static
       - ./media:/media
       - ./nginx/:/etc/nginx/conf.d/:ro
@@ -48,17 +48,15 @@ services:
       - webapp
     networks:
       - dev
-
   certbot:
     image: certbot/certbot:latest
+#    command: certonly --webroot -w /var/www/certbot -d aniton.xyz --email cool.drakon@gmail.com --agree-tos --non-interactive --force-renewal
     volumes:
-      - ./certbot/www/:/var/www/certbot/:rw
-      - ./certbot/conf/:/etc/letsencrypt/:rw
-    networks:
-      - dev
+      - ./certbot/www:/var/www/certbot/:rw
+      - ./certbot/conf:/etc/letsencrypt/:rw
 
 volumes:
   mysql_data:
-  
+
 networks:
   dev:
