@@ -3,6 +3,10 @@ services:
     build: .
     stdin_open: true 
     tty: true 
+    volumes:
+      - ./aniton:/app
+      - ./aniton/static:/app/static
+      - ./aniton/media:/app/media
     command: bash entrypoint.sh
     depends_on:
       - db

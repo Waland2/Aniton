@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-1ha!-xg2-c@c8z%x3yhz30rcv8ts*w#v7&bzrxgn@meatbw$ht
 
 DEBUG = eval(os.environ.get('DEBUG', 'True'))
 
-ALLOWED_HOSTS = ['aniton.xyz', 'www.aniton.xyz', '127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['aniton.xyz', 'www.aniton.xyz', 'https://aniton.xyz', '127.0.0.1', 'localhost']
 
 # django-redis settings
 CACHES = {
