@@ -4,7 +4,7 @@ COPY /aniton /app
 
 COPY requirements.txt /app
 
-COPY entrypoint.sh /app
+# COPY entrypoint.sh /app
 
 WORKDIR /app
 
@@ -12,4 +12,5 @@ RUN pip install --upgrade pip
 
 RUN pip install -r requirements.txt
 
-# CMD ["python3", "manage.py", "makemigrations", "&&", "python3", "manage.py", "migrate", "&&", "python3", "manage.py", "runserver", "0.0.0.0:8000"]
+# CMD ["bash", "test.sh"]
+## CMD ["python3", "manage.py", "makemigrations", "&&", "python3", "manage.py", "migrate", "&&", "python3", "manage.py", "runserver", "0.0.0.0:8000"]

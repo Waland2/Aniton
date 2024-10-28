@@ -30,7 +30,9 @@ SECRET_KEY = 'django-insecure-1ha!-xg2-c@c8z%x3yhz30rcv8ts*w#v7&bzrxgn@meatbw$ht
 DEBUG = eval(os.environ.get('DEBUG', 'True'))
 
 ALLOWED_HOSTS = ['aniton.xyz', 'www.aniton.xyz', 'https://aniton.xyz', '127.0.0.1', 'localhost']
-
+CSRF_TRUSTED_ORIGINS = [
+    'https://aniton.xyz',
+]
 # django-redis settings
 CACHES = {
     'default': {
@@ -171,8 +173,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT=BASE_DIR / 'static/'
-# Default primary key field type
+# STATIC_ROOT=BASE_DIR / 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')# Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
