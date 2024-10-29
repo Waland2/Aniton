@@ -6,6 +6,7 @@ from datetime import datetime
 class Upgrade(models.Model):
     name_eng = models.CharField(max_length=100, blank=True)
     name_rus = models.CharField(max_length=100, blank=True)
+    image = models.ImageField(blank=True)
 
     money_cost = models.IntegerField(default=0)
     influence_cost = models.IntegerField(default=0)

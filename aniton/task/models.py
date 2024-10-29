@@ -5,7 +5,6 @@ class Task(models.Model):
     is_verif_necessary = models.BooleanField(default=True)
     type = models.CharField(max_length=30, choices=[("game", "Game"), ("meta", "Meta")])
     
-    image = models.ImageField(blank=True)
     title_eng = models.TextField(blank=True)
     title_rus = models.TextField(blank=True)
     link = models.URLField(blank=True)

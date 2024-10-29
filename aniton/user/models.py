@@ -26,14 +26,14 @@ class Profile(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     daily_streak = models.IntegerField(default=1)
-    last_daily_collect = models.DateTimeField(default=datetime.now())
+    last_daily_collect = models.DateTimeField(default=datetime.now)
     tasks = models.JSONField(default=dict, blank=True)
 
     number_of_friends = models.IntegerField(default=0)
     referral_code = models.CharField(max_length=25)
 
     upgrades = models.JSONField(default=dict, blank=True)
-    profit_ratio = models.IntegerField(default=10)
+    profit_ratio = models.IntegerField(default=150)
     passive_income = models.IntegerField(default=0)
     timeout_after_creating = models.IntegerField(default=TIMEOUT_AFTER_CREATING)
 
