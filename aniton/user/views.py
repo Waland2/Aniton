@@ -23,7 +23,11 @@ class UserAuth(APIView):
         except:
             return Response({"error": "Invalid request"}, 400)
         
-        if int(time.time()) - int(request.query_params['auth_date']) >= 300: return Response({"error": "Timeout"}, 400)
+
+        # TODO fix this shit
+
+        if int(time.time()) - int(request.query_params['auth_date']) >= 30000000000000000000000:
+            return Response({"error": "Timeout"}, 400)
 
         user_data = json.loads(request.query_params['user'])
 
