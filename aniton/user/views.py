@@ -4,12 +4,14 @@ from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth.models import User
+from django.core.cache import cache
 
 import time
 import json
 
 from . import utils
 from .serializers import ProfileSerializer
+
 
 class UserAuth(APIView): 
     permission_classes = [AllowAny]
@@ -65,8 +67,14 @@ class SetWallet(APIView):
         request.profile.save()
         return Response({'status': 'ok'})
 
-
 class UserStats(APIView):
     def get(self, request):
-        return Response(ProfileSerializer(request.profile).data)
-    
+        profile_data = ProfileSerializer(request.profile).data
+
+        anime_creating_timeout = cache.get(f"{request.profile.id}_anime_timeout", 0)
+        additional_data = {
+            'timeout_seconds': anime_creating_timeout
+        }
+        response_data = {**profile_data, **additional_data}
+        
+        return Response(response_data)
