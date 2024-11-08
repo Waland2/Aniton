@@ -71,7 +71,8 @@ class UserStats(APIView):
     def get(self, request):
         profile_data = ProfileSerializer(request.profile).data
 
-        anime_creating_timeout = cache.get(f"{request.profile.id}_anime_timeout", 0)
+        
+        anime_creating_timeout = cache.ttl(f"{request.profile.id}_anime_timeout")
         additional_data = {
             'timeout_seconds': anime_creating_timeout
         }
