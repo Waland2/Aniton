@@ -41,8 +41,9 @@ class CreateAnime(APIView):
         anime_data['influence_profit'] = influence_profit
 
         Anime.objects.create(**anime_data)
-        request.profile.update(money=money_profit, influence=influence_profit)
-        
+        request.profile.money += money_profit
+        request.profile.influence += influence_profit
+        request.profile.save()
 
         anime_timeout = request.profile.timeout_after_creating
 
