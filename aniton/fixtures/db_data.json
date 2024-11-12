@@ -6,7 +6,7 @@
         "min_rating": 0.1,
         "max_rating": 2.0,
         "text_eng": "I didn't think it could get worse, but {:studioname} proved me wrong.",
-        "text_rus": "Я думал, хуже быть не может, но {:studioname} доказала обратное."
+        "text_rus": "Я думалб что хуже быть не может, но {:studioname} доказала обратное."
     }
 },
 {
@@ -306,7 +306,7 @@
         "min_rating": 0.1,
         "max_rating": 2.0,
         "text_eng": "I can’t unsee this now.",
-        "text_rus": "Как это развидеть?"
+        "text_rus": "Как мне теперь, это развидеть?"
     }
 },
 {
@@ -676,7 +676,7 @@
         "min_rating": 7.6,
         "max_rating": 9.0,
         "text_eng": "Impressive effort! Definitely a standout this season.",
-        "text_rus": "Впечатляющее старание! Определенно выделяется в этом сезоне."
+        "text_rus": "Впечатляющее произведение! Определенно выделяется в этом сезоне."
     }
 },
 {
@@ -876,7 +876,7 @@
         "min_rating": 7.6,
         "max_rating": 8.5,
         "text_eng": "Unexpectedly good! Now I’m invested.",
-        "text_rus": "Неожиданно хорошее! Теперь я втянулся."
+        "text_rus": "Неожиданно хорошо! втянулся с самого начала."
     }
 },
 {
@@ -1056,7 +1056,7 @@
         "min_rating": 3.6,
         "max_rating": 5.0,
         "text_eng": "Not great, not terrible. Just… there.",
-        "text_rus": "Не хорошо, не плохо. Просто… существует."
+        "text_rus": "Не хорошо, не плохо. Просто… норм."
     }
 },
 {
@@ -2013,8 +2013,8 @@
     "model": "upgrade.upgrade",
     "pk": 2,
     "fields": {
-        "name_eng": "Hiring Interns",
-        "name_rus": "Наем стажеров",
+        "name_eng": "Purchasing Basic Equipment",
+        "name_rus": "Покупка базового оборудования",
         "image": "",
         "money_cost": 12000,
         "influence_cost": 0,
@@ -2026,8 +2026,8 @@
     "model": "upgrade.upgrade",
     "pk": 3,
     "fields": {
-        "name_eng": "Purchasing Basic Equipment",
-        "name_rus": "Закупка базового оборудования",
+        "name_eng": "Hiring Interns",
+        "name_rus": "Обучение команды",
         "image": "",
         "money_cost": 15000,
         "influence_cost": 0,
@@ -2053,7 +2053,7 @@
     "pk": 5,
     "fields": {
         "name_eng": "Hiring Screenwriters",
-        "name_rus": "Наем сценаристов",
+        "name_rus": "Найм сценаристов",
         "image": "",
         "money_cost": 200000,
         "influence_cost": 0,
@@ -2078,8 +2078,8 @@
     "model": "upgrade.upgrade",
     "pk": 7,
     "fields": {
-        "name_eng": "Marketing Investment",
-        "name_rus": "Инвестиции в маркетинг",
+        "name_eng": "Merchandise Release",
+        "name_rus": "Выпуск мерча",
         "image": "",
         "money_cost": 3000000,
         "influence_cost": 0,
@@ -2091,8 +2091,8 @@
     "model": "upgrade.upgrade",
     "pk": 8,
     "fields": {
-        "name_eng": "Merchandise Release",
-        "name_rus": "Выпуск мерча",
+        "name_eng": "Marketing Investment",
+        "name_rus": "Маркетинговые инвестиции",
         "image": "",
         "money_cost": 5000000,
         "influence_cost": 0,
@@ -2118,7 +2118,7 @@
     "pk": 10,
     "fields": {
         "name_eng": "Establishing a Subsidiary Studio",
-        "name_rus": "Создание дочерней студии",
+        "name_rus": "Открытие дочерней студии",
         "image": "",
         "money_cost": 25000000,
         "influence_cost": 0,
@@ -2328,77 +2328,6 @@
         "daily_streak_required": 30,
         "money_reward": 5000000,
         "influence_reward": 100000
-    }
-},
-{
-    "model": "auth.user",
-    "pk": 5,
-    "fields": {
-        "password": "pbkdf2_sha256$600000$cZcnP0tbwJEt0CWaYziTt7$Pz3pdtvEYW3DNmXNjVgl+56SY8zfwP7gyWkdSa8QACA=",
-        "last_login": "2024-10-27T17:45:52.259Z",
-        "is_superuser": true,
-        "username": "admin",
-        "first_name": "",
-        "last_name": "",
-        "email": "admin@gmail.com",
-        "is_staff": true,
-        "is_active": true,
-        "date_joined": "2024-08-02T10:53:43.576Z",
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "auth.user",
-    "pk": 8,
-    "fields": {
-        "password": "!NLe2JyVhzZZNKw2xjb6DEgFBofrlSsbM7d3UjKeI",
-        "last_login": null,
-        "is_superuser": false,
-        "username": "5551137037",
-        "first_name": "",
-        "last_name": "",
-        "email": "",
-        "is_staff": false,
-        "is_active": true,
-        "date_joined": "2024-08-04T16:13:36.322Z",
-        "groups": [],
-        "user_permissions": []
-    }
-},
-{
-    "model": "user.profile",
-    "pk": 5551137037,
-    "fields": {
-        "user": 8,
-        "username": "memcor",
-        "language": "ru",
-        "money": 372042,
-        "influence": 100,
-        "studio_name": "FoxMedia Inc",
-        "is_learning_complete": true,
-        "created_at": "2024-08-04T16:13:36.338Z",
-        "updated_at": "2024-10-28T18:00:03.870Z",
-        "daily_streak": 1,
-        "last_daily_collect": "2024-08-06T19:11:53Z",
-        "tasks": {
-            "2": {
-                "status": "completed",
-                "time": "2024-08-06 20:55:58.934417"
-            }
-        },
-        "number_of_friends": 1,
-        "referral_code": "2jt04r1",
-        "upgrades": {
-            "1": {
-                "status": "purchased",
-                "time": "2024-08-11 16:04:46.701442"
-            }
-        },
-        "profit_ratio": 12200,
-        "passive_income": 7200,
-        "timeout_after_creating": 0,
-        "ton_wallet": "UQDk-L4IbKvcqz4MvTn64yxiIhbgIHI4qOO_kQKQvn4u-HCR"
     }
 }
 ]
