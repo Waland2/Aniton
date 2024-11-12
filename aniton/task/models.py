@@ -9,6 +9,8 @@ class Task(models.Model):
     title_rus = models.TextField(blank=True)
     link = models.URLField(blank=True)
 
+    image = models.ImageField(blank=True, upload_to="tasks/")
+
     money_required = models.IntegerField(default=0)
     influence_required = models.IntegerField(default=0)
     friends_required = models.IntegerField(default=0)
