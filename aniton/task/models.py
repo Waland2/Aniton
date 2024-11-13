@@ -4,6 +4,8 @@ from datetime import datetime
 class Task(models.Model):
     is_verif_necessary = models.BooleanField(default=True)
     type = models.CharField(max_length=30, choices=[("game", "Game"), ("meta", "Meta")])
+
+    category = models.CharField(max_length=100, blank=True)
     
     title_eng = models.TextField(blank=True)
     title_rus = models.TextField(blank=True)
