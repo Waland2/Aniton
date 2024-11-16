@@ -64,9 +64,28 @@ class CompleteTask(APIView):
         if task.is_completed(request.profile): 
             return Response({'error': 'Task already completed'}, 400)
 
-        if not task.is_verif_necessary or task.verify_requirements(request.profile):
+        if not task.is_verif_necessary:
+            return 
+
+        if task.verify_requirements(request.profile):
             task.complete(request.profile)
         else:
             return Response({'error': 'user does not meet the requirements'}, 400)
         
         return Response({'status': 'completed', 'money_reward': task.money_reward, 'influence_reward': task.influence_reward})
+    
+class SubscribeCheck(APIView):
+    def post(self, request):
+        profile = request.profile
+
+        # TODO subscribe check (how idk)
+        check_result = True
+
+        if not check_result: return Response({'error': 'user doesnt subscribe on channel'}, 400)
+        
+        profile.money += self.money_reward
+        profile.influence += self.influence_reward
+        profile.tasks[4] = {'status': 'completed', 'time': str(dt.datetime.now())}
+        profile.save()
+
+        return Response({'status': 'success'})
