@@ -82,10 +82,9 @@ class SubscribeCheck(APIView):
         check_result = True
 
         if not check_result: return Response({'error': 'user doesnt subscribe on channel'}, 400)
+
+        task = Task.objects.get(id=4)
         
-        profile.money += self.money_reward
-        profile.influence += self.influence_reward
-        profile.tasks[4] = {'status': 'completed', 'time': str(dt.datetime.now())}
-        profile.save()
+        task.complete(profile)
 
         return Response({'status': 'success'})
