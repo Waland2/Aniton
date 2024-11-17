@@ -36,7 +36,7 @@ class DailyTaskCollect(APIView):
         profile.money += money_reward 
         profile.influence += influence_reward
         profile.daily_streak = new_streak
-        # profile.last_daily_collect = dt.datetime.now() TODO fix test change
+        profile.last_daily_collect = dt.datetime.now() 
         profile.save()
 
 
