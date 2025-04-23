@@ -88,3 +88,4 @@ class SubscribeCheck(APIView):
         task.complete(profile)
 
         return Response({'status': 'success'})
+
