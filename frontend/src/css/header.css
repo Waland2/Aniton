@@ -1,0 +1,65 @@
+
+
+header {
+    font-family: var(--minor-font);
+    padding: 5px 10px;
+    background-color: #5f9db6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.money-and-influence {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.money-span, .influence-span {
+    font-weight: 600;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
+.money-and-influence .icon {
+    margin-right: 5px;
+}
+
+.donate-and-sound {
+    gap: 5px;
+    display: flex;
+}
+
+.donate-and-sound img{
+    width: 90%;
+    height: 90%;
+}
+
+.donate, .sound {
+    cursor: pointer;
+    background: #90b3ff;    
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    width: 48px;
+    height: 48px;
+    padding: 5px;
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 10px;
+    transition: .2s;
+}
+
+
+.donate:hover, .sound:hover {
+    transition: .2s;
+    background: #7ba5ff;    
+}
+
+.donate.pressed {
+    background: #45619b;    
+}
+
+.donate.pressed:hover {
+    background: #45619b;    
+}

@@ -1,0 +1,201 @@
+#account {
+    display: flex;
+    padding: 0px 10px;
+    flex-direction: column;    
+    max-height: 480px;
+    border-radius: 20px;
+    padding-bottom: 100px;
+    overflow: scroll;
+}
+
+.account-info {
+    text-align: center;
+    margin: 3px 10px 5px 10px;
+    margin-bottom: 0px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 10px;
+    background-color: rgba(0, 35, 162, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.account-info .info-span {
+    font-size: 16px;
+    color: #333;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.account-info .info-span:last-child {
+    border-bottom: none;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.ref-block {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.ref-title {
+    font-weight: 700;
+}
+
+.ref-link {
+    padding: 2px;
+    background-color: rgb(230, 230, 230);
+    border: 1px solid black;
+    border-radius: 5px;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    transition: .2s;
+}
+
+.ref-link:hover {
+    transition: .2s;
+    background-color: rgb(240, 240, 240);
+}
+
+.ref-link img {
+    filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(132deg) brightness(102%) contrast(105%);
+}
+
+#tasks {
+
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 10px 0 5px 0;
+    font-weight: 500;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 2px solid #4a4a4a;
+}
+
+.divider:not(:empty)::before {
+    margin-right: 5px;
+}
+
+.divider:not(:empty)::after {
+    margin-left: 5px;
+}
+
+.task-title {
+    font-size: 15px;
+    font-weight: 500;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.task-category {
+    width: 100%;
+    overflow-x: scroll;
+    gap: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.task {
+    position: relative;
+    display: flex;
+    width: 100px;
+    font-size: 14px;
+    height: 100px;
+    border: 1px solid rgb(87, 87, 87);
+    /* padding: 5px; */
+    border-radius: 8px;
+    /* background: radial-gradient(white, rgb(243, 243, 243)); */
+    background-color: rgba(48, 92, 157, 0.188);
+    flex-shrink: 0;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: .1s;
+}
+
+.task:hover {
+    transition: .1s;
+    background-color: rgba(48, 92, 157, 0.463);
+}
+
+.can-be-complet {
+    box-shadow: inset 0 0 10px rgba(234, 0, 0, 0.8); 
+    animation: glow 1.5s infinite alternate;
+}
+  
+@keyframes glow {
+    from {
+      box-shadow: inset 0 0 3px rgba(98, 0, 234, 0.8), 0 0 5px rgba(98, 0, 234, 0.6);
+    }
+    to {
+      box-shadow: inset 0 0 10px rgba(98, 0, 234, 1), 0 0 20px rgba(98, 0, 234, 0.8);
+    }
+}
+  
+
+
+.task-reward {
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.money-reward {
+    margin-bottom: 2px;
+}
+
+.money-reward, .influence-reward {
+    display: flex;
+    align-items: center;
+}
+
+.money-reward img, .influence-reward img{
+    margin-left: 3px;
+}
+
+
+.text-with-icon {
+    display: flex;
+    align-items: center;
+}
+
+.complete-background {
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: rgba(0, 128, 0, 0.297);
+    display: none;
+}
+
+.complete-background img {
+    width: 35%;
+    /* display: none; */
+}
+
+.task.completed  {
+    background-color: rgba(255, 255, 255, 0);
+
+}
+.task.completed .complete-background {
+    display: flex;
+    justify-content: center;
+}

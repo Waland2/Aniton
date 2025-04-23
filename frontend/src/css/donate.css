@@ -1,0 +1,16 @@
+#donate {
+    padding: 5px;
+}
+
+.donate-title {
+    display: flex;
+    height: 150px;
+    text-align: center;
+    align-items: center;
+    font-size: 22px;
+}
+
+.ton-connect-btn {
+    justify-content: center;
+    display: flex;
+}

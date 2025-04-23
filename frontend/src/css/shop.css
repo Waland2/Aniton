@@ -1,0 +1,123 @@
+
+#shop {
+    padding: 15px 30px;
+}
+
+/* custom scroll bar */
+
+
+.upgrades {
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 480px;
+    overflow: hidden;
+    overflow: auto;
+    padding-bottom: 300px;
+}
+
+.upgrade {
+    display: flex;
+    cursor: pointer;
+    font-family: var(--minor-font);
+    transition: .15s;
+    display: flex;
+    border: solid 2px black;
+    border-radius: 5px;
+    width: 100%;
+    height: 100px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    position: relative;
+}
+
+.upgrade:hover {
+    opacity: 0.85;
+}
+
+.upgrade-image {
+    transition: .15s;
+    width: 35%;
+    height: 100%;
+}
+
+.upgrade-info {
+    background-color: rgb(48, 92, 157);
+    z-index: 1;
+    width: 100%;
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+
+}
+
+.upgrade-info span {
+    display: flex;
+    align-items: center;
+    padding-left: 5px;
+}
+
+.upgrade-name {
+    padding: 2px;
+    background-color: rgba(88, 88, 88, 0.675);
+}
+
+.upgrade-cost, .upgrade-profit, .upgrade-passive{
+    margin-top: 1px;
+}
+
+.cost-icon {
+    margin-left: 5px;
+    width: 20px;
+}
+
+.upgrade-number-info {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.upgrade.disable {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.upgrade.purchased {
+    cursor: not-allowed;
+}
+
+.pur-backround {
+    display: none;
+}
+
+.purchased .pur-backround {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    font-size: 20px;
+    position: absolute;
+    background: #37373791;
+    align-items: center;
+    justify-content: center;
+    cursor: not-allowed;
+}
+
+.purchased .pur-backround:hover {
+    opacity: 1;
+}
+
+.pur-backround h2 {
+    color: white;
+}
+
+.line {
+    margin-bottom: 15px;
+    width: 100%;
+    border: 4px solid rgba(62, 62, 62, 0.344);
+    border-radius: 20px;
+}
+
