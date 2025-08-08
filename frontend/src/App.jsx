@@ -54,61 +54,62 @@ function App() {
 
     const [dailyReward, setDailyReward] = useState(null);
 
-    useEffect(() => { // TODO loading in many state / fix many request
+    useEffect(() => { 
         if (loading === 0) {
             let token = Cookies.get('token');
             if (token) axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
 
-            setLoading(1);
-            // api.get(`user/auth?${window.Telegram.WebView.initParams.tgWebAppData}`) // TODO
-            api.get(`user/auth?query_id=AAENod9KAgAAAA2h30rcTf19&user=%7B%22id%22%3A5551137037%2C%22first_name%22%3A%22Memcor%22%2C%22last_name%22%3A%22%22%2C%22username%22%3A%22memcor%22%2C%22language_code%22%3A%22ru%22%2C%22is_premium%22%3Atrue%2C%22allows_write_to_pm%22%3Atrue%7D&auth_date=1726156760&hash=bf76fa0959f70d0ccbb19b6ed4d79040eab0985dc9e5fca540f17b5a92350dff`)
-            .then(resp => {
-                token = resp.data.access;
-                api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-                Cookies.set('token', token, { expires: 3, secure: true });
-            })
-            .then(() => {
-                return api.get(`user/stats`).then(resp => {
-                    let data = resp.data;
-                    setUser({ ...data });
-                    setTimeoutSeconds(data.timeout_seconds);
-                    return data;
-                });
-            })
-            .then(user_data => {
-                return api.get(`upgrade/upgrades`).then(resp => {
-                    let data = resp.data;
-                    data.forEach(el => {
-                        el.is_purchased = (el.id in user_data.upgrades ? true : false);
+            setLoading(1); 
+            api.get(`user/auth?${window.Telegram.WebView.initParams.tgWebAppData}`) 
+                .then(resp => {
+                    token = resp.data.access;
+                    api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+                    Cookies.set('token', token, { expires: 3, secure: true });
+                })
+                .then(() => {
+                    return api.get(`user/stats`).then(resp => {
+                        let data = resp.data;
+                        setUser({ ...data });
+                        setTimeoutSeconds(data.timeout_seconds);
+                        return data;
                     });
-                    setUpgrades(data);
-                    return user_data;
                 })
-            })
-            .then(user_data => {
-                api.get(`task/tasks`).then(resp => {
-                    let data = resp.data;
-                    data.forEach(el => {
-                        el.is_completed = (el.id in user_data.tasks ? true : false);
-                    });
-                    setTasks(data);
+                .then(user_data => {
+                    return api.get(`upgrade/upgrades`).then(resp => {
+                        let data = resp.data;
+                        data.forEach(el => {
+                            el.is_purchased = (el.id in user_data.upgrades ? true : false);
+                        });
+                        setUpgrades(data);
+                        return user_data;
+                    })
                 })
-            })
-            .then(() => {
-                api.post('task/daily').then(resp => {
-                    setDailyReward(resp.data);
-                    console.log(resp.data)
-                    setLoading(2);
+                .then(user_data => {
+                    api.get(`task/tasks`).then(resp => {
+                        let data = resp.data;
+                        data.forEach(el => {
+                            if (el) {
+                                el.is_completed = (el.id in user_data.tasks ? true : false);
+                            }
+                        });
+                        setTasks(data);
+                    })
                 })
-            })
-            .catch(err => {
-                setLoading(0);
-            })
+                .then(() => {
+                    api.post('task/daily').then(resp => {
+                        setDailyReward(resp.data);
+                        console.log(resp.data)
+                        setLoading(2);
+                    })
+                })
+                .catch(err => {
+                    setLoading(0);
+                })
         }
     }, [loading])
 
     useEffect(() => {
-        
+
         let timer;
         if (timeoutSeconds > 0) {
             timer = setTimeout(() => setTimeoutSeconds(timeoutSeconds - 1), 1000);
@@ -119,16 +120,16 @@ function App() {
 
     { /* Your app */ }
     return (loading < 2) ? <div id='app' className='selectDisable'><Loading /></div> :
-        
+
         <TonConnectUIProvider manifestUrl="https://main--clinquant-gecko-344f70.netlify.app/tonconnect-manifest.json">
-            <AppContext.Provider value={{user, setUser, upgrades, setUpgrades, tasks, setTasks}}>
+            <AppContext.Provider value={{ user, setUser, upgrades, setUpgrades, tasks, setTasks }}>
                 <div id='app' className='selectDisable'>
-                    <Header page={page} setPage={setPage} isSound={isSound} setIsSound={setIsSound}/>
-                    {page === 0 ? <Home timeoutSeconds={timeoutSeconds} setTimeoutSeconds={setTimeoutSeconds} dailyReward={dailyReward} setDailyReward={setDailyReward} /> 
-                    :
-                    (page === 1 ? <Shop /> : (page === 2 ? <Account /> : <Donate/>))}
+                    <Header page={page} setPage={setPage} isSound={isSound} setIsSound={setIsSound} />
+                    {page === 0 ? <Home timeoutSeconds={timeoutSeconds} setTimeoutSeconds={setTimeoutSeconds} dailyReward={dailyReward} setDailyReward={setDailyReward} />
+                        :
+                        (page === 1 ? <Shop /> : (page === 2 ? <Account /> : <Donate />))}
                     <Footer page={page} setPage={setPage} />
-                </div>  
+                </div>
             </AppContext.Provider>
         </TonConnectUIProvider>
 }

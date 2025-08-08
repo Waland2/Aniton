@@ -42,8 +42,8 @@ function MetaTasks({isTasksVisible, setIsTasksVisible, tasks, setTasks}) {
 
     return (isTasksVisible && (task !== null) && <>
         <div className="meta-tasks" >
-            <button className={"m-task" + (task.is_completed ? " completed" : "")} onClick={openPopup}>
-                <span>{(task.is_completed ? "Задание выполнено" : "Подпишись на наш канал!")}</span>
+            <button className={"m-task" + (task?.is_completed ? " completed" : "")} onClick={openPopup}>
+                <span>{(task?.is_completed ? "Задание выполнено" : "Подпишись на наш канал!")}</span>
             </button>
         </div>
 

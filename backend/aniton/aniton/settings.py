@@ -23,16 +23,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-1ha!-xg2-c@c8z%x3yhz30rcv8ts*w#v7&bzrxgn@meatbw$ht'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-1ha!-xg2-c@c8z%x3yhz30rcv8ts*w#v7&bzrxgn@meatbw$ht')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG = eval(os.environ.get('DEBUG', 'True'))
 
-ALLOWED_HOSTS = ['aniton.xyz', 'www.aniton.xyz', 'https://aniton.xyz', '127.0.0.1', 'localhost']
-CSRF_TRUSTED_ORIGINS = [
-    'https://aniton.xyz',
-]
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "")
+ALLOWED_HOSTS = [host.strip() for host in ALLOWED_HOSTS.split(",") if host.strip()]
+
+CSRF_TRUSTED_ORIGINS = os.environ.get("CSRF_TRUSTED_ORIGINS", "")
+CSRF_TRUSTED_ORIGINS = [origin.strip() for origin in CSRF_TRUSTED_ORIGINS.split(",") if origin.strip()]
+
 # django-redis settings
 CACHES = {
     'default': {

@@ -12,7 +12,7 @@ function Task({task, tasks, setTasks}) {
     const {user, setUser} = useContext(AppContext);
 
     const complete = () => {
-        if (task.is_completed || !(user.money >= task.money_required && user.number_of_friends >= task.friends_required && user.daily_streak >= task.daily_streak_required)) return;
+        if (task?.is_completed || !(user.money >= task.money_required && user.number_of_friends >= task.friends_required && user.daily_streak >= task.daily_streak_required)) return;
         const taskId = task.id;
         
         api.post(`task/complete/${taskId}`).then(resp => {
@@ -34,7 +34,7 @@ function Task({task, tasks, setTasks}) {
         })
     }
 
-    return <div onClick={complete} className={"task" + (task.is_completed ? " completed" : ((user.money >= task.money_required && user.number_of_friends >= task.friends_required && user.daily_streak >= task.daily_streak_required) ? " can-be-complet" : ""))}>
+    return <div onClick={complete} className={"task" + (task?.is_completed ? " completed" : ((user.money >= task.money_required && user.number_of_friends >= task.friends_required && user.daily_streak >= task.daily_streak_required) ? " can-be-complet" : ""))}>
         <span className="complete-background">
             <img src={complete_icon} alt="" />
         </span>

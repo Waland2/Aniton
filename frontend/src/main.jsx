@@ -5,8 +5,9 @@ import axios from 'axios'
 
 window.Telegram.WebApp.expand()
 
+
 const api = axios.create({
-  baseURL: 'https://aniton.xyz/api/v1/',
+  baseURL: `https://${import.meta.env.VITE_API_URL || ("localhost:8000")}/api/v1/`,
 });
 
 export default api;

@@ -24,11 +24,8 @@ class UserAuth(APIView):
                 return Response({"error": "The data is not from Telegram"}, 400)
         except:
             return Response({"error": "Invalid request"}, 400)
-        
 
-        # TODO fix this shit
-
-        if int(time.time()) - int(request.query_params['auth_date']) >= 30000000000000000000000:
+        if int(time.time()) - int(request.query_params['auth_date']) >= 172800: # token valid for 48 hours
             return Response({"error": "Timeout"}, 400)
 
         user_data = json.loads(request.query_params['user'])
@@ -39,9 +36,6 @@ class UserAuth(APIView):
             user.profile.language = user_data['language_code']
             user.profile.referral_code = utils.generate_ref_code(user_data['id'])
             user.save()
-
-        # TODO IP-SAVER
-        # print(utils.get_ip(request))
 
         user = User.objects.get(username=str(user_data['id']))
         

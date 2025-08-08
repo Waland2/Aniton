@@ -1,0 +1,93 @@
+version: "3.9"
+
+services:
+  backend:
+    container_name: timeflow_backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    stdin_open: true
+    tty: true
+    command: bash /app/entrypoint.sh
+    volumes:
+      - ./backend/aniton:/app
+      - ./backend/aniton/static:/app/static
+      - ./backend/aniton/media:/app/media
+      - ./backend/entrypoint.sh:/app/entrypoint.sh
+    env_file:
+      - .env.prod
+    depends_on:
+      - db
+      - redis
+    expose:
+      - "8000"
+    restart: always
+    networks:
+      - dev
+
+  # frontend:
+  #   container_name: timeflow_frontend
+  #   build:
+  #     context: ./frontend
+  #     dockerfile: Dockerfile
+  #     args:
+  #       VITE_API_URL: ${VITE_API_URL}
+  #   volumes:
+  #     - frontend_dist:/app/dist
+  #   networks:
+  #     - dev
+
+  redis:
+    image: redis:7-alpine
+    container_name: timeflow_redis
+    ports:
+      - "6379:6379"
+    restart: always
+    networks:
+      - dev
+
+  db:
+    image: mysql:8.0
+    container_name: timeflow_db
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - mysql_data:/var/lib/mysql
+    env_file:
+      - .env.prod
+    restart: always
+    networks:
+      - dev
+
+  nginx:
+    build:
+      context: .
+      dockerfile: ./nginx/Dockerfile
+      args:
+        VITE_API_URL: ${VITE_API_URL}
+    container_name: timeflow_nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./backend/static:/static:ro
+      - ./backend/media:/media:ro
+      - certbot-etc:/etc/letsencrypt:ro
+      - certbot-www:/var/www/certbot:ro
+    depends_on:
+      - backend
+    networks:
+      - dev
+
+volumes:
+  mysql_data:
+  frontend_dist:
+  certbot-etc:
+    external: true
+    name: timeflow_certbot-etc
+  certbot-www:
+    external: true
+    name: timeflow_certbot-www
+
+networks:
+  dev:
