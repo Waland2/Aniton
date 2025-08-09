@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   backend:
-    container_name: timeflow_backend
+    container_name: aniton_backend
     build:
       context: ./backend
       dockerfile: Dockerfile
@@ -39,7 +39,7 @@ services:
 
   redis:
     image: redis:7-alpine
-    container_name: timeflow_redis
+    container_name: aniton_redis
     ports:
       - "6379:6379"
     restart: always
@@ -48,7 +48,7 @@ services:
 
   db:
     image: mysql:8.0
-    container_name: timeflow_db
+    container_name: aniton_db
     command: --default-authentication-plugin=mysql_native_password
     volumes:
       - mysql_data:/var/lib/mysql
@@ -64,7 +64,7 @@ services:
       dockerfile: ./nginx/Dockerfile
       args:
         VITE_API_URL: ${VITE_API_URL}
-    container_name: timeflow_nginx
+    container_name: aniton_nginx
     restart: always
     ports:
       - "80:80"
@@ -78,16 +78,18 @@ services:
       - backend
     networks:
       - dev
+  certbot:
+    image: certbot/certbot
+    container_name: aniton_certbot
+    volumes:
+      - certbot-etc:/etc/letsencrypt
+      - certbot-www:/var/www/certbot
 
 volumes:
   mysql_data:
-  frontend_dist:
   certbot-etc:
-    external: true
-    name: timeflow_certbot-etc
+  certbot-var:
   certbot-www:
-    external: true
-    name: timeflow_certbot-www
 
 networks:
   dev:
