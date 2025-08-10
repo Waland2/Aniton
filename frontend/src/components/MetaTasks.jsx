@@ -43,7 +43,7 @@ function MetaTasks({isTasksVisible, setIsTasksVisible, tasks, setTasks}) {
     return (isTasksVisible && (task !== null) && <>
         <div className="meta-tasks" >
             <button className={"m-task" + (task?.is_completed ? " completed" : "")} onClick={openPopup}>
-                <span>{(task?.is_completed ? "Задание выполнено" : "Подпишись на наш канал!")}</span>
+                <span>{(task?.is_completed ? "Task completed" : "Subscribe to our channel!")}</span>
             </button>
         </div>
 
@@ -52,14 +52,14 @@ function MetaTasks({isTasksVisible, setIsTasksVisible, tasks, setTasks}) {
 
             <div className="popup sub-popup">
                 <div className="sub-reward">
-                    <span>Награда: {formatNumber(task.money_reward)} <img src={money_icon} alt="" /></span>
+                    <span>Reward: {formatNumber(task.money_reward)} <img src={money_icon} alt="" /></span>
                 </div>
                 <div className="sub-checker">
-                    <btn onClick={() => window.Telegram.WebApp.openTelegramLink("https://t.me/anitonbot")} className="btn">Подписатья</btn>
-                    <button className="btn" onClick={check}>Проверить</button>
+                    <btn onClick={() => window.Telegram.WebApp.openTelegramLink("https://t.me/anitonbot")} className="btn">Subscribe</btn>
+                    <button className="btn" onClick={check}>Check</button>
                 </div>
-                <div className={"error" + (isErrorVisible ? " visible" : "")}>Наша система - не обнаружила вашу подписку.</div>
-                <button className="cancel-creation-btn" onClick={openPopup}>Отмена</button>
+                <div className={"error" + (isErrorVisible ? " visible" : "")}>Our system could not detect your subscription.</div>
+                <button className="cancel-creation-btn" onClick={openPopup}>Cancel</button>
             </div>
         </>}
     </>)

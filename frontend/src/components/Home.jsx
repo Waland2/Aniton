@@ -26,15 +26,15 @@ function Home({ timeoutSeconds, setTimeoutSeconds, dailyReward, setDailyReward }
                 <div className="black-bg daily-bg"></div>
                 <div className='popup daily-streak'>
                     <span className='streak-info'>
-                        <span className="streak-number">{dailyReward.new_streak} дней</span>
-                        <span className='streak-reward'>Ежедневная награда {formatNumber(dailyReward.money_reward)} <img src={money_icon} alt="" /></span>
+                        <span className="streak-number">{dailyReward.new_streak} day</span>
+                        <span className='streak-reward'>Daily Reward{formatNumber(dailyReward.money_reward)} <img src={money_icon} alt="" /></span>
                     </span>
                     <div className='ok-button-div'> 
 
                         <button className='btn' onClick={() => {
                             setDailyReward({...dailyReward, is_claimed_today: true});
                             setUser({...user, money: user.money + dailyReward.money_reward});
-                            }}>Хорошо</button>
+                            }}>OK</button>
                     </div>
                 </div>
                 </>  

@@ -101,6 +101,8 @@
     height: 100%;
     display: flex;
     justify-content: center;
+    text-align: center;
+    padding: 2px;
     align-items: center;
 }
 

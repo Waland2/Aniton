@@ -10,7 +10,7 @@ function AnimeResult({ rating, money, influence, reviews, isResultVisible, setIs
 
     return (isResultVisible ? <>
         <div className="result-div">
-            <h2>Результаты Аниме</h2>
+            <h2>Anime Results</h2>
             <div className="rating-section">
                 <span>{rating}/10</span>
             </div>
@@ -30,7 +30,7 @@ function AnimeResult({ rating, money, influence, reviews, isResultVisible, setIs
             </div>
 
 
-            <button className="submit-btn" onClick={() => setIsResultVisible(false)}>Ок</button>
+            <button className="submit-btn" onClick={() => setIsResultVisible(false)}>Ok</button>
         </div>
     </> : <></>)
 }

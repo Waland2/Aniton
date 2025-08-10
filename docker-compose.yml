@@ -70,8 +70,8 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./backend/static:/static:ro
-      - ./backend/media:/media:ro
+      - ./backend/aniton/static:/static:ro
+      - ./backend/aniton/media:/media:ro
       - certbot-etc:/etc/letsencrypt:ro
       - certbot-www:/var/www/certbot:ro
     depends_on:

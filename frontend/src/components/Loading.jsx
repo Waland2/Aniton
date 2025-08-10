@@ -18,13 +18,12 @@ function Loading() {
     return <>
     <div className='loading-page' style={{backgroundImage: background}}>   
         <div className='background-filter'>
-            <span className='lp-text'>Загружаем игру...</span>
+            <span className='lp-text'>Loading game...</span>
             <img className='lp-gif' src={loadSpinner} alt="" />
         </div>
     </div>
     </>
         
 }
-
 
 export default Loading

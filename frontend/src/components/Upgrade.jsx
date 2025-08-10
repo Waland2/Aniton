@@ -1,4 +1,3 @@
-
 import img1 from "../images/image.png"
 import money_icon from "../icons/money.svg"
 
@@ -35,13 +34,13 @@ function Upgrade({ name, image, money_cost, id, passive_income_boost, profit_rat
 
     return <span onClick={purchase} className={"upgrade" + ((user.money < money_cost && !is_purchased) ? " disable" : "") + (is_purchased ? " purchased" : "")} data-id={id}>
         <img className="upgrade-image" src={image ? image.replace("http:", "https:") : img1} alt="" />
-        <div className="pur-backround"><h2>Куплено</h2></div>
+        <div className="pur-backround"><h2>Purchased</h2></div>
         <div className="upgrade-info">
             <span className="upgrade-name">{name}</span>
             <div className="upgrade-number-info">
-                <span className="upgrade-cost">Цена: {formatNumber(money_cost)}$</span>
-                {profit_ratio_boost === 0 ? <></> : <span className="upgrade-passive">+ {formatNumber(profit_ratio_boost)} пунктов прибыли</span>}
-                {passive_income_boost === 0 ? <></> : <span className="upgrade-profit">+ {formatNumber(passive_income_boost)}<img className="cost-icon" src={money_icon} alt="" />/минута</span>}
+                <span className="upgrade-cost">Price: {formatNumber(money_cost)}$</span>
+                {profit_ratio_boost === 0 ? <></> : <span className="upgrade-passive">+ {formatNumber(profit_ratio_boost)} profit points</span>}
+                {passive_income_boost === 0 ? <></> : <span className="upgrade-profit">+ {formatNumber(passive_income_boost)}<img className="cost-icon" src={money_icon} alt="" />/minute</span>}
             </div>
         </div>
     </span>

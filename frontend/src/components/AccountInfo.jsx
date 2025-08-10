@@ -18,13 +18,13 @@ function AccountInfo() {
     };
     return <div className="account-info">
 
-        <span className="info-span"><span className="bold">Название студии:</span> {user.studio_name}</span>
-        {/* <span className="info-span"><span className="bold">Язык:</span> {user.language}</span> */}
-        <span className="info-span"><span className="bold">Ton кошелёк:</span> {user.ton_wallet ? user.ton_wallet.substr(0, 4) + "..." + user.ton_wallet.substr(user.ton_wallet.length - 4) : "<Не подключен>"}</span>
+        <span className="info-span"><span className="bold">Studio name:</span> {user.studio_name}</span>
+        {/* <span className="info-span"><span className="bold">Language:</span> {user.language}</span> */}
+        <span className="info-span"><span className="bold">Ton wallet:</span> {user.ton_wallet ? user.ton_wallet.substr(0, 4) + "..." + user.ton_wallet.substr(user.ton_wallet.length - 4) : "<Not connected>"}</span>
         <div className="ref-block" onClick={copyToClipboard}> 
         
-            <span className="ref-title">Ваша ссылка-приглашение для друзей</span> 
-            <span className="ref-link">{isCopied ? "Скопировано!" : referralLink}<img src={copy_icon} alt="" /></span>
+            <span className="ref-title">Your referral link for friends</span> 
+            <span className="ref-link">{isCopied ? "Copied!" : referralLink}<img src={copy_icon} alt="" /></span>
         </div>
     </div>
 }

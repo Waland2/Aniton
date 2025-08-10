@@ -10,7 +10,7 @@ function TasksList() {
     <div id="tasks">
 
         <div class="divider">
-            <span>Заработок</span>
+            <span>Earnings</span>
         </div>
         <div className="task-category">
                 {tasks.map((task, index) => {
@@ -19,7 +19,7 @@ function TasksList() {
         </div>
 
         <div className="divider">
-            <span>Друзья</span>
+            <span>Friends</span>
         </div>
         <div className="task-category">
                 {tasks.map((task, index) => {
@@ -28,7 +28,7 @@ function TasksList() {
         </div>
 
         <div className="divider">
-            <span>Ежедневные задания</span>
+            <span>Daily Rewards</span>
         </div>
         <div className="task-category">
                 {tasks.map((task, index) => {

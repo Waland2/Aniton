@@ -1,4 +1,3 @@
-
 import api from "../main";
 import React, { useState, useEffect, useContext } from 'react';
 import AppContext from '../AppContext';
@@ -16,7 +15,7 @@ function AnimeForm({timeoutSeconds, setTimeoutSeconds, setIsResultVisible, setLa
     const [isTimeout, setIsTimeout] = useState(true);
 
     useEffect(() => {
-        if (selectedType === 'Фильм' || selectedType === 'Короткометражка') {
+        if (selectedType === 'Movie' || selectedType === 'Short film') {
             setIsSliderDisabled(true);
             setEpisodeCount(1);
         } else {
@@ -48,7 +47,7 @@ function AnimeForm({timeoutSeconds, setTimeoutSeconds, setIsResultVisible, setLa
             setIsSliderDisabled(false);
             setIsFormCompleted(false);
             setIsTasksVisible(true)
-        }else {
+        } else {
             setIsTasksVisible(false)
         }
         setIsFormVisible(!isFormVisible);
@@ -79,24 +78,24 @@ function AnimeForm({timeoutSeconds, setTimeoutSeconds, setIsResultVisible, setLa
                 id="create-btn"
                 className={isFormVisible ? "hidden" : ""}
                 onClick={toggleFormVisibility}>
-                {isTimeout ? `Осталось: ${formatTime(timeoutSeconds)}` : "Новое аниме!"}
+                {isTimeout ? `Time left: ${formatTime(timeoutSeconds)}` : "New anime!"}
             </button>
         </div>
 
         {
             isFormVisible && (
                 <div className="anime-form">
-                    <button onClick={toggleFormVisibility} className="cancel-creation-btn">Отмена</button>
+                    <button onClick={toggleFormVisibility} className="cancel-creation-btn">Cancel</button>
                     <input
                         type="text"
                         id="anime-title"
-                        placeholder="Название"
+                        placeholder="Title"
                         className="input"
                         onChange={e => setAnimeName(e.target.value)}
                     />
 
                     <div className="type-buttons">
-                        {['Сериал', 'Фильм', 'Короткометражка'].map((type) => (
+                        {['Series', 'Movie', 'Short film'].map((type) => (
                             <button
                                 key={type}
                                 className={`type-button ${selectedType === type ? 'selected' : ''}`}
@@ -109,7 +108,7 @@ function AnimeForm({timeoutSeconds, setTimeoutSeconds, setIsResultVisible, setLa
 
                     <div className="slider-container">
                         <label htmlFor="episode-slider">
-                            Количество серий: {episodeCount}
+                            Number of episodes: {episodeCount}
                         </label>
                         <input
                             type="range"
@@ -123,7 +122,7 @@ function AnimeForm({timeoutSeconds, setTimeoutSeconds, setIsResultVisible, setLa
                         />
                     </div>
 
-                    <button disabled={!isFormCompleted} className="submit-btn" onClick={handleSubmit}>Создать!</button>
+                    <button disabled={!isFormCompleted} className="submit-btn" onClick={handleSubmit}>Create!</button>
                 </div>
             )
         }</>

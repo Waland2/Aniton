@@ -33,7 +33,7 @@ class UserAuth(APIView):
         if not User.objects.filter(username=user_data['id']).exists():
             user = User.objects.create_user(username=str(user_data['id']))
             user.profile.username = user_data['username']
-            user.profile.language = user_data['language_code']
+            user.profile.language = 'en' #'user_data['language_code']' # TODO
             user.profile.referral_code = utils.generate_ref_code(user_data['id'])
             user.save()
 

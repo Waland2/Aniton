@@ -10,7 +10,7 @@ function Donate() {
     return <>
         {user.ton_wallet ? <div></div> : 
         <div>
-            <span className="donate-title">Для продолжения - подключите кошелёк</span>
+            <span className="donate-title">To continue - connect your wallet</span>
             <div className="ton-connect-btn">
                 <TonConnectButton/>
 
