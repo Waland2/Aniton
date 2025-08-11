@@ -12,12 +12,19 @@ A Telegram Mini App game.
 | Infrastructure | Docker, Docker Compose, nginx,                              |
 
 ## Screenshots
-![Home1](./frontend/public/Screenshot_1.png)
-![Home2](./frontend/public/Screenshot_2.png)
-![Home3](./frontend/public/Screenshot_3.png)
-![Shop](./frontend/public/Screenshot_4.png)
-![Account](./frontend/public/Screenshot_5.png)
-![WalletConnect](./frontend/public/Screenshot_6.png)
+
+<p align="center">
+  <img src="./frontend/public/Screenshot_1.png" width="200">
+  <img src="./frontend/public/Screenshot_2.png" width="200">
+  <img src="./frontend/public/Screenshot_3.png" width="200">
+</p>
+
+<p align="center">
+  <img src="./frontend/public/Screenshot_4.png" width="200">
+  <img src="./frontend/public/Screenshot_5.png" width="200">
+  <img src="./frontend/public/Screenshot_6.png" width="200">
+</p>
+
 
 ## Quick Start (Local)
 
