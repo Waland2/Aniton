@@ -78,7 +78,7 @@ function AnimeForm({timeoutSeconds, setTimeoutSeconds, setIsResultVisible, setLa
                 id="create-btn"
                 className={isFormVisible ? "hidden" : ""}
                 onClick={toggleFormVisibility}>
-                {isTimeout ? `Time left: ${formatTime(timeoutSeconds)}` : "New anime!"}
+                {isTimeout ? `Time left: ${formatTime(timeoutSeconds)}` : "Create new!"}
             </button>
         </div>
 

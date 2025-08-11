@@ -10,7 +10,7 @@ function AnimeResult({ rating, money, influence, reviews, isResultVisible, setIs
 
     return (isResultVisible ? <>
         <div className="result-div">
-            <h2>Anime Results</h2>
+            <h2>Results</h2>
             <div className="rating-section">
                 <span>{rating}/10</span>
             </div>
