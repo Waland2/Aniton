@@ -7,7 +7,7 @@ A full-stack Telegram Mini App game.
 | Area           | Technologies                                                |
 | -------------- | ----------------------------------------------------------- |
 | Frontend       | React 18, Vite                                              |
-| Backend        | Django, Django REST Framework                               |
+| Backend        | Django REST Framework                                       |
 | Database       | MySQL 8, Redis 7                                            |
 | Infrastructure | Docker, Docker Compose, Nginx                               |
 
@@ -30,15 +30,29 @@ A full-stack Telegram Mini App game.
 
 ### Backend
 
+1. Install dependencies:
+
 ```bash
 cd backend
 pip install -r requirements.txt
+```
+
+2. Run migrations:
+
+```bash
 cd aniton
 python manage.py migrate
+```
+
+3. Start development server:
+
+```bash
 python manage.py runserver 0.0.0.0:8000
 ```
 
 ### Frontend
+
+Install dependencies and start dev server:
 
 ```bash
 cd frontend
@@ -49,23 +63,41 @@ npm run dev
 ## Production Deployment
 
 ### Deployment
+
+1. Create and edit `.env.prod` (see `.env.example`)
+2. Edit `nginx/default.conf`
+3. Build and start containers:
+
+```bash
+docker compose --env-file .env.prod up -d --build
 ```
-1) create and edit .env.prod file
-2) edit nginx/default.conf
-3) docker compose --env-file .env.prod build
-4) docker compose up -d
-5) get ssl certificates:
+
+4. Get SSL certificates:
+
+```bash
 docker compose run --rm certbot certonly --webroot \
   --webroot-path=/var/www/certbot \
   --email <email> --agree-tos --no-eff-email \
   -d <domain> -d <...>
-6) restart nginx container:
+```
+
+5. Restart nginx container:
+
+```bash
 docker compose restart nginx
 ```
 
-### Certificate auto renew
+6) Create super user and load fixtures:
+
 ```bash
-0 3 * * * docker compose run --rm certbot renew --webroot -w /var/www/certbot --quiet && docker kill -s HUP aniton_nginx
+docker exec -it aniton_backend python manage.py createsuperuser
+docker exec -it aniton_backend python manage.py loaddata fixtures/data.json
+```
+
+### Certificate renew
+
+```bash
+docker compose run --rm certbot renew --webroot -w /var/www/certbot --quiet && docker kill -s HUP aniton_nginx
 ```
 
 ## License
